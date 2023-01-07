@@ -10,7 +10,7 @@ defmodule Chaperon.Worker.Supervisor do
   @name Chaperon.Worker.Supervisor
 
   def start_link do
-    opts = [strategy: :simple_one_for_one, name: @name]
+    opts = [strategy: :one_for_one, name: @name]
     Task.Supervisor.start_link(opts)
   end
 
