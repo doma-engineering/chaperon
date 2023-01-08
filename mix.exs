@@ -82,7 +82,7 @@ defmodule Chaperon.Mixfile do
       {:httpoison, "~> 1.8"},
       {:uuid, "~> 1.1"},
       {:poison, "~> 3.0"},
-      {:histogrex, "~> 0.0.5"},
+      {:histogrex, git: "https://github.com/doma-engineering/histogrex.git", branch: "maslowalex-fix-warnings"},
       {:websockex, "~> 0.4.3"},
       {:e_q, "~> 1.0.0"},
       {:instream, "~> 0.21.0"},

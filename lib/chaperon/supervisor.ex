@@ -4,7 +4,6 @@ defmodule Chaperon.Supervisor do
   """
 
   use Supervisor
-  import Supervisor.Spec
 
   def start_link do
     Supervisor.start_link(__MODULE__, [], name: __MODULE__)
@@ -18,7 +17,7 @@ defmodule Chaperon.Supervisor do
     common_children = [
       Chaperon.Master.Supervisor,
       {Task.Supervisor, name: Chaperon.Worker.Supervisor, strategy: :one_for_one},
-      supervisor(Chaperon.Scenario.Metrics, []),
+      {Chaperon.Scenario.Metrics, []},
       :hackney_pool.child_spec(
         :chaperon,
         timeout: 20_000,
