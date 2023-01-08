@@ -9,6 +9,8 @@ defmodule Chaperon.API.HTTP do
   require Poison
 
   defmodule HealthCheckPlug do
+    @moduledoc false
+
     import Plug.Conn
     @behaviour Plug
 

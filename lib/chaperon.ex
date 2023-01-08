@@ -42,9 +42,7 @@ defmodule Chaperon do
       # wait a bit because of node connection delays
       Process.sleep(500)
 
-      with :ok <- Chaperon.Master.ignore_node_as_worker(node()) do
-        :ok
-      end
+      :ok = Chaperon.Master.ignore_node_as_worker(node())
     else
       {:error, "Connecting to Chaperon master node failed: #{node_name}"}
     end

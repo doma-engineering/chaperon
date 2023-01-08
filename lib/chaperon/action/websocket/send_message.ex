@@ -4,6 +4,8 @@ defmodule Chaperon.Action.WebSocket.SendMessage do
   Includes an optional list of `options` to be sent along to `Socket.Web.send/3`.
   """
 
+  @type t :: %__MODULE__{}
+
   defstruct message: nil,
             type: :text,
             options: []
