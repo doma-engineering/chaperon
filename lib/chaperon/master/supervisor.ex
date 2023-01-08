@@ -3,20 +3,22 @@ defmodule Chaperon.Master.Supervisor do
   Supervisor for the globally registered `Chaperon.Master` load test runner process.
   """
 
-  import Supervisor.Spec
+  use DynamicSupervisor
 
   @name __MODULE__
 
-  def start_link do
-    children = [
-      worker(Chaperon.Master, [])
-    ]
-
-    opts = [strategy: :simple_one_for_one, name: @name]
-    Supervisor.start_link(children, opts)
+  def start_link([]) do
+    DynamicSupervisor.start_link(@name, [], name: @name)
   end
 
   def start_master do
-    Supervisor.start_child(@name, [])
+    DynamicSupervisor.start_child(@name, {Chaperon.Master, []})
+  end
+
+  @impl true
+  def init(_) do
+    DynamicSupervisor.init(
+      strategy: :one_for_one
+    )
   end
 end

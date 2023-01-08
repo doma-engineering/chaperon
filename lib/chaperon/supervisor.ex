@@ -3,18 +3,22 @@ defmodule Chaperon.Supervisor do
   Root supervisor for all Chaperon processes & supervisors.
   """
 
+  use Supervisor
   import Supervisor.Spec
 
   def start_link do
-    opts = [strategy: :one_for_one, name: Chaperon.Supervisor]
-    Supervisor.start_link(children(), opts)
+    Supervisor.start_link(__MODULE__, [], name: __MODULE__)
+  end
+
+  def init([]) do
+    Supervisor.init(children(), strategy: :one_for_one)
   end
 
   def children do
     common_children = [
-      supervisor(Chaperon.Master.Supervisor, []),
-      supervisor(Chaperon.Worker.Supervisor, []),
-      worker(Chaperon.Scenario.Metrics, []),
+      Chaperon.Master.Supervisor,
+      {Task.Supervisor, name: Chaperon.Worker.Supervisor, strategy: :one_for_one},
+      supervisor(Chaperon.Scenario.Metrics, []),
       :hackney_pool.child_spec(
         :chaperon,
         timeout: 20_000,
@@ -24,7 +28,7 @@ defmodule Chaperon.Supervisor do
 
     common_children =
       if Chaperon.API.HTTP.enabled?() do
-        common_children ++ [worker(Chaperon.API.HTTP, [])]
+        common_children ++ [{Chaperon.API.HTTP, []}]
       else
         common_children
       end
