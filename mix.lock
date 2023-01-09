@@ -42,5 +42,5 @@
   "telemetry": {:hex, :telemetry, "1.2.0", "a8ce551485a9a3dac8d523542de130eafd12e40bbf76cf0ecd2528f24e812a44", [:rebar3], [], "hexpm", "1427e73667b9a2002cf1f26694c422d5c905df889023903c4518921d53e3e883"},
   "unicode_util_compat": {:hex, :unicode_util_compat, "0.7.0", "bc84380c9ab48177092f43ac89e4dfa2c6d62b40b8bd132b1059ecc7232f9a78", [:rebar3], [], "hexpm", "25eee6d67df61960cf6a794239566599b09e17e668d3700247bc498638152521"},
   "uuid": {:hex, :uuid, "1.1.8", "e22fc04499de0de3ed1116b770c7737779f226ceefa0badb3592e64d5cfb4eb9", [:mix], [], "hexpm", "c790593b4c3b601f5dc2378baae7efaf5b3d73c4c6456ba85759905be792f2ac"},
-  "websockex": {:hex, :websockex, "0.4.3", "92b7905769c79c6480c02daacaca2ddd49de936d912976a4d3c923723b647bf0", [:mix], [], "hexpm", "95f2e7072b85a3a4cc385602d42115b73ce0b74a9121d0d6dbbf557645ac53e4"},
+  "websockex": {:git, "https://github.com/Azolo/websockex.git", "5ff38dab1ed8d2be4da5f9224c317f88cc9c6572", [branch: "master"]},
 }
