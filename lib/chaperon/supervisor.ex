@@ -25,19 +25,19 @@ defmodule Chaperon.Supervisor do
       )
     ]
 
-    common_children =
+    _common_children =
       if Chaperon.API.HTTP.enabled?() do
         common_children ++ [{Chaperon.API.HTTP, []}]
       else
         common_children
       end
 
-    case Application.get_env(:chaperon, Chaperon.Export.InfluxDB, nil) do
-      nil ->
-        common_children
+    # case Application.get_env(:chaperon, Chaperon.Export.InfluxDB, nil) do
+    #   nil ->
+    #     common_children
 
-      _ ->
-        [Chaperon.Export.InfluxDB.child_spec() | common_children]
-    end
+    #   _ ->
+    #     [Chaperon.Export.InfluxDB.child_spec() | common_children]
+    # end
   end
 end
