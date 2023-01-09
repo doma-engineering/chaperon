@@ -5,7 +5,7 @@ defmodule Chaperon.Mixfile do
     [
       app: :chaperon,
       version: "0.3.1",
-      elixir: "~> 1.6",
+      elixir: "~> 1.14",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -17,7 +17,7 @@ defmodule Chaperon.Mixfile do
           :httpoison,
           :uuid,
           :poison,
-          :histogrex
+          :doma_histogrex
         ],
         flags: [
           # "-Woverspecs",
@@ -49,7 +49,7 @@ defmodule Chaperon.Mixfile do
 
   defp package do
     [
-      name: "chaperon",
+      name: "doma_chaperon",
       files: [
         "lib",
         "docs",
@@ -63,39 +63,31 @@ defmodule Chaperon.Mixfile do
       ],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/polleverywhere/chaperon"
+        "Github" => "https://github.com/doma-engineering/chaperon",
+        "Upstream" => "https://github.com/polleverywhere/chaperon"
       }
     ]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 1.5"},
+      {:httpoison, "~> 1.8"},
       {:uuid, "~> 1.1"},
-      {:poison, "~> 3.0"},
-      {:histogrex, "~> 0.0.5"},
-      {:websockex, "~> 0.4"},
+      {:poison, "~> 5.0"},
+      {:doma_histogrex, "~> 0.0.5"},
+      {:websockex, "~> 0.4.3"},
       {:e_q, "~> 1.0.0"},
-      {:instream, "~> 0.21.0"},
+      {:instream, "~> 2.2"},
       {:deep_merge, "~> 1.0"},
-      {:cowboy, "~> 2.6"},
-      {:plug, "~> 1.8"},
-      {:plug_cowboy, "~> 2.0"},
+      {:cowboy, "~> 2.9"},
+      {:plug, "~> 1.14"},
+      {:plug_cowboy, "~> 2.6"},
       {:basic_auth, "~> 2.2"},
-      {:ex_aws, "~> 2.0"},
-      {:ex_aws_s3, "~> 2.0"},
+      {:ex_aws, "~> 2.4"},
+      {:ex_aws_s3, "~> 2.3"},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.21.1", only: :dev},
-      {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
+      {:ex_doc, "~> 0.29.1", only: :dev},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 end

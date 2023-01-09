@@ -85,8 +85,6 @@ defmodule Chaperon.Export.CSV do
   end
 
   defp encode_row_values(vals, separator) do
-    @columns
-    |> Enum.map(&round(vals[&1]))
-    |> Enum.join(separator)
+    Enum.map_join(@columns, separator, &round(vals[&1]))
   end
 end

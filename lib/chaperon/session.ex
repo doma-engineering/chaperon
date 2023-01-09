@@ -317,8 +317,7 @@ defmodule Chaperon.Session do
           |> retry_delay(opts)
           |> retry_on_error(func, args, opts)
         else
-          stacktrace = System.stacktrace()
-          reraise err, stacktrace
+          reraise err, __STACKTRACE__
         end
     end
   end
@@ -386,9 +385,6 @@ defmodule Chaperon.Session do
     |> await(task_name, session.async_tasks[task_name])
   end
 
-  @doc """
-  Await all async tasks for the given `task_names` in `session`.
-  """
   @spec await(Session.t(), [atom]) :: Session.t()
   def await(session, task_names) when is_list(task_names) do
     task_names
@@ -1226,15 +1222,6 @@ defmodule Chaperon.Session do
     )
   end
 
-  @doc """
-  Await a given signal in the current session and returns session afterwards.
-
-  Example:
-
-      session
-      |> await_signal(:continue_search)
-      |> get("/search", params: [query: "Got load test?"])
-  """
   def await_signal(session, expected_signal) do
     await_common(
       session,
