@@ -32,7 +32,7 @@ defmodule Chaperon.Master do
     Chaperon.Master.Supervisor.start_master()
   end
 
-  def start_link do
+  def start_link([]) do
     GenServer.start_link(__MODULE__, [], name: @name)
   end
 
