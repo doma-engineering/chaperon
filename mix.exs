@@ -75,7 +75,7 @@ defmodule Chaperon.Mixfile do
       {:uuid, "~> 1.1"},
       {:poison, "~> 5.0"},
       {:doma_histogrex, "~> 0.0.5"},
-      {:websockex, "~> 0.4.3"},
+      {:websockex, git: "https://github.com/Azolo/websockex.git", branch: "master"},
       {:e_q, "~> 1.0.0"},
       {:instream, "~> 2.2"},
       {:deep_merge, "~> 1.0"},
