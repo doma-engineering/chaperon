@@ -44,7 +44,7 @@ defmodule Chaperon.Export.JSON do
         {action, vals} ->
           %{action: action, metrics: metrics(vals)}
       end)
-      |> Poison.encode!()
+      |> Jason.encode!()
 
     {:ok, data}
   end

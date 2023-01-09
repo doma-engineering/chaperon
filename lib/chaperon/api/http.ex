@@ -6,7 +6,6 @@ defmodule Chaperon.API.HTTP do
   """
 
   require Logger
-  require Poison
 
   defmodule HealthCheckPlug do
     @moduledoc false
@@ -44,7 +43,7 @@ defmodule Chaperon.API.HTTP do
   plug(:self_logger)
   plug(Plug.RequestId)
   plug(BasicAuth, use_config: {:chaperon, Chaperon.API.HTTP})
-  plug(Plug.Parsers, parsers: [:json], json_decoder: Poison)
+  plug(Plug.Parsers, parsers: [:json], json_decoder: Jason)
   plug(:match)
   plug(:dispatch)
 
@@ -175,7 +174,7 @@ defmodule Chaperon.API.HTTP do
 
   defp send_json_resp(conn, status_code, data) do
     conn
-    |> send_resp(status_code, Poison.encode!(data))
+    |> send_resp(status_code, Jason.encode!(data))
   end
 
   def parse_options(args) do
