@@ -243,7 +243,7 @@ defmodule Chaperon.Action.HTTP do
   defp json_body(data) do
     {
       %{"Content-Type" => "application/json", "Accept" => "application/json"},
-      data |> Poison.encode!()
+      data |> Jason.encode!()
     }
   end
 

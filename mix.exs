@@ -16,7 +16,6 @@ defmodule Chaperon.Mixfile do
         plt_add_apps: [
           :httpoison,
           :uuid,
-          :poison,
           :doma_histogrex
         ],
         flags: [
@@ -73,7 +72,6 @@ defmodule Chaperon.Mixfile do
     [
       {:httpoison, "~> 1.8"},
       {:uuid, "~> 1.1"},
-      {:poison, "~> 5.0"},
       {:doma_histogrex, "~> 0.0.5"},
       {:websockex, "~> 0.4.3"},
       {:e_q, "~> 1.0.0"},

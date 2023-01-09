@@ -1676,7 +1676,7 @@ defmodule Chaperon.Session do
         {:ok, response}
 
       :json ->
-        Poison.decode(response_body, keys: :atoms)
+        Jason.decode(response_body, keys: :atoms)
 
       decode when is_function(decode) ->
         decode.(response_body)

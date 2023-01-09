@@ -10,7 +10,7 @@ defmodule Chaperon.Action.WebSocket.SendMessage do
             type: :text,
             options: []
 
-  def encoded_message(%{message: [json: data]}), do: Poison.encode!(data)
+  def encoded_message(%{message: [json: data]}), do: Jason.encode!(data)
   def encoded_message(%{message: msg}), do: msg
 
   def message_type(%{message: [json: _]}), do: :text
