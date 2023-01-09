@@ -85,7 +85,7 @@ defmodule Chaperon.Mixfile do
       {:basic_auth, "~> 2.2"},
       {:ex_aws, "~> 2.4"},
       {:ex_aws_s3, "~> 2.3"},
-      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.2", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.29.1", only: :dev},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
